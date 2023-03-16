@@ -42,14 +42,20 @@ public class User {
     /**
      * 是否已删除用户
      */
-    @TableField("delete")
-    private Integer delete;
+    @TableField("deleted")
+    private Integer deleted;
 
     /**
      * 是否已删除用户
      */
     @TableField("ban")
     private Integer ban;
+
+    /**
+     * 用户角色 0为普通用户，1为管理员
+     */
+    @TableField("role")
+    private Integer role;
 
     /**
      * 创建时间

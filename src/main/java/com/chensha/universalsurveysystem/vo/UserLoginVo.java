@@ -3,7 +3,7 @@ package com.chensha.universalsurveysystem.vo;
 import lombok.Data;
 
 @Data
-public class UserLogin {
+public class UserLoginVo {
     /**
      * 账号
      */
@@ -15,7 +15,7 @@ public class UserLogin {
     private String username;
 
     /**
-     *
+     *token
      */
     private String token;
 }

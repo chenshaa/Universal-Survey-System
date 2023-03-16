@@ -36,6 +36,11 @@ public class JWTUtils {
         return null;
     }
 
+    /**
+     * 从token提取用户账号
+     * @param token token
+     * @return 用户账号
+     */
     public static String getAccount(String token){
         try{
             Map<String, Object> claims=checkToken(token);
