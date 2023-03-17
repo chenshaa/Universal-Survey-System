@@ -3,7 +3,12 @@ package com.chensha.universalsurveysystem.vo.papams;
 import lombok.Data;
 
 @Data
-public class AddQuestionParams {
+public class UpdateQuestionParams {
+    /**
+     * 问题id
+     */
+    private String id;
+
     /**
      * 问题内容
      */
@@ -20,12 +25,12 @@ public class AddQuestionParams {
     private Integer questionType;
 
     /**
-     * 问题答案
-     */
-    private String answer;
-
-    /**
      * 问题选项
      */
     private String options;
+
+    /**
+     * 问题答案
+     */
+    private String answer;
 }

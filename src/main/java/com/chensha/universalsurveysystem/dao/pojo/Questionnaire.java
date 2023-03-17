@@ -38,6 +38,7 @@ public class Questionnaire {
 
     /**
      * 问卷是否匿名
+     * 0为登录回答问卷，1为匿名回答问卷
      */
     @TableField("anonymous_enabled")
     private Boolean anonymousEnabled;

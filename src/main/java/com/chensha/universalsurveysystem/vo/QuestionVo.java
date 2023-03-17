@@ -1,9 +1,15 @@
-package com.chensha.universalsurveysystem.vo.papams;
+package com.chensha.universalsurveysystem.vo;
 
 import lombok.Data;
 
 @Data
-public class AddQuestionParams {
+public class QuestionVo {
+
+    /**
+     * 问题id
+     */
+    private String id;
+
     /**
      * 问题内容
      */
@@ -18,11 +24,6 @@ public class AddQuestionParams {
      * 问题类型
      */
     private Integer questionType;
-
-    /**
-     * 问题答案
-     */
-    private String answer;
 
     /**
      * 问题选项
