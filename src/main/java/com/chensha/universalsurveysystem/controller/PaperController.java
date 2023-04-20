@@ -1,7 +1,8 @@
 package com.chensha.universalsurveysystem.controller;
 
 import com.chensha.universalsurveysystem.service.PaperService;
-import com.chensha.universalsurveysystem.vo.papams.AddPaperParams;
+import com.chensha.universalsurveysystem.vo.Result;
+import com.chensha.universalsurveysystem.vo.papams.PaperParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,35 +14,29 @@ public class PaperController {
     private PaperService paperService;
 
     /**
-     * 添加一张paper
+     * 修改paper
+     *
+     * @param authHeader        认证头
+     * @param updatePaperParams paper信息
+     * @return paper列表
      */
-    @PostMapping("addPaper")
-    public void addPaper(@RequestHeader("Authorization") String authHeader, @RequestBody AddPaperParams addPaperParams) {
-        paperService.addPaper(authHeader, addPaperParams);
+    @PostMapping("updatePaper/{questionnaireId}")
+    public Result updatePaper(@RequestHeader("Authorization") String authHeader, @RequestBody String updatePaperParams, @PathVariable("questionnaireId") String questionnaireId) {
+        return (paperService.updatePaper(authHeader, updatePaperParams, questionnaireId));
     }
 
-    /**
-     * 删除一张paper
-     */
-    @PostMapping("deletePaper")
-    public void deletePaper(@RequestHeader("Authorization") String authHeader, @RequestBody String pid) {
-        paperService.deletePaper(authHeader, pid);
-    }
 
     /**
      * 获取paper列表
+     *
+     * @param authHeader      认证头
+     * @param questionnaireId 问卷id
+     * @return paper列表
      */
-    @GetMapping("listPaper")
-    public void listPaper(@RequestHeader("Authorization") String authHeader) {
-        paperService.listPaper(authHeader);
+    @GetMapping("listPaper/{questionnaireId}")
+    public Result listPaper(@RequestHeader("Authorization") String authHeader, @PathVariable("questionnaireId") String questionnaireId) {
+        return (paperService.listPaper(authHeader, questionnaireId));
     }
 
-    /**
-     * 添加paperList
-     */
-    @PostMapping("addPaperList")
-    public void addPaperList(@RequestHeader("Authorization") String authHeader, @RequestBody String pid) {
-        paperService.addPaperList(authHeader, pid);
-    }
 
 }

@@ -9,25 +9,25 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@TableName("users")
+@TableName("paper")
 public class Paper {
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(type = IdType.ASSIGN_ID)
     private String id;
 
     /**
      * 问卷ID
      */
     @TableField("questionnaire_id")
-    private Integer questionnaireId;
+    private String questionnaireId;
 
     /**
      * 作答人ID
      */
     @TableField("respondent_id")
-    private Integer respondentId;
+    private String respondentId;
 
     /**
      * 创建时间

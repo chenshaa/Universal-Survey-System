@@ -51,8 +51,8 @@ public class UserController {
      * @param userId 用户id
      * @return 用户列表
      */
-    @GetMapping("deleteUser")
-    public Result deleteUser(@RequestHeader("Authorization") String authHeader,@RequestParam("userId") int userId) {
+    @GetMapping("deleteUser/{userId}")
+    public Result deleteUser(@RequestHeader("Authorization") String authHeader,@PathVariable("userId") String userId) {
         return userService.deleteUser(authHeader,userId);
     }
 

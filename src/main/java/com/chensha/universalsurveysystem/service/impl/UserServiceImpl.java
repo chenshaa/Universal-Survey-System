@@ -46,11 +46,12 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             return Result.fail(ErrorCode.ERROR_USERNAME.getCode(), ErrorCode.ERROR_USERNAME.getMsg());
         }
-        String token = JWTUtils.createToken(user.getAccount());
+        String token = JWTUtils.createToken(user.getAccount(),user.getId());
 
         UserLoginVo userLogin = new UserLoginVo();
         userLogin.setAccount(user.getAccount());
         userLogin.setUsername(user.getUsername());
+        userLogin.setRole(user.getRole());
         userLogin.setToken(token);
         return Result.success(userLogin);
     }
@@ -78,7 +79,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(DigestUtils.md5Hex(addUserParams.getPassword() + slat));
         user.setRole(addUserParams.getRole());
         userMapper.insert(user);
-        return Result.success("成功");
+        return Result.success(userMapper.selectList(null));
     }
 
     @Override
@@ -92,14 +93,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Result deleteUser(String authHeader, int userId) {
+    public Result deleteUser(String authHeader, String userId) {
         //判断账号是否为管理员
         if (!sysUserService.authToken4Admin(authHeader)) {
             return Result.fail(ErrorCode.NO_PERMISSION.getCode(), ErrorCode.NO_PERMISSION.getMsg());
         }
 
+        //排除删除自己
+        if (sysUserService.getUserIdByAccount(sysUserService.getAccount(authHeader)).equals(userId)) {
+            return Result.fail(ErrorCode.NO_PERMISSION.getCode(), ErrorCode.NO_PERMISSION.getMsg());
+        }
+
         userMapper.deleteById(userId);
-        return Result.success("成功");
+        return Result.success(userMapper.selectList(null));
     }
 
     @Override

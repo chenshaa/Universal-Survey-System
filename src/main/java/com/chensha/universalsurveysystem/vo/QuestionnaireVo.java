@@ -1,11 +1,10 @@
 package com.chensha.universalsurveysystem.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
 
 import java.util.Date;
 
+@Data
 public class QuestionnaireVo {
     /**
      * 问卷id
@@ -35,7 +34,7 @@ public class QuestionnaireVo {
     /**
      * 问卷是否匿名
      */
-    private String anonymousEnabled;
+    private Boolean anonymousEnabled;
 
     /**
      *  问卷开始时间
@@ -45,6 +44,5 @@ public class QuestionnaireVo {
     /**
      * 问卷结束时间
      */
-    @TableField(value = "end_time")
     private Date endTime;
 }

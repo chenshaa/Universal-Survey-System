@@ -12,7 +12,7 @@ public interface UserService {
 
     Result listUser(String authHeader);
 
-    Result deleteUser(String authHeader, int userId);
+    Result deleteUser(String authHeader, String userId);
 
     Result updateUser(String authHeader, UpdateUserParams updateUserParams);
 }

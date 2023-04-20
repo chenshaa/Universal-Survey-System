@@ -29,4 +29,14 @@ public class QuestionVo {
      * 问题选项
      */
     private String options;
+
+    /**
+     * 问题是否必填
+     */
+    private Boolean isRequired;
+
+    /**
+     * 问题答案
+     */
+    private String userChoise;
 }

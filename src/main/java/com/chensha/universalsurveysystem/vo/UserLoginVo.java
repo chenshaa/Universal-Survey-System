@@ -15,6 +15,11 @@ public class UserLoginVo {
     private String username;
 
     /**
+     * 用户角色 0为普通用户，1为管理员
+     */
+    private Integer role;
+
+    /**
      *token
      */
     private String token;

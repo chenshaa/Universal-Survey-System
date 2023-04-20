@@ -14,4 +14,6 @@ public interface sysUserService {
     String getAccount(String authHeader);
 
     String getUserIdByAccount(String account);
+
+    String getUserNameById(String id);
 }

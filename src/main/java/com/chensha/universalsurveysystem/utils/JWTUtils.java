@@ -15,9 +15,10 @@ public class JWTUtils {
     public static final String AUTH_HEADER_KEY = "Authorization";
     public static final String TOKEN_PREFIX = "Bearer ";
 
-    public static String createToken(String userAccount){
+    public static String createToken(String userAccount,String userId){
         Map<String,Object> claims = new HashMap<>();
         claims.put("userAccount",userAccount);
+        claims.put("userId",userId);
         JwtBuilder jwtBuilder = Jwts.builder()
                 .signWith(SignatureAlgorithm.HS256, jwtToken) // 签发算法，秘钥为jwtToken
                 .setClaims(claims) // body数据，要唯一，自行设置

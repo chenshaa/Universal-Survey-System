@@ -65,6 +65,7 @@ public class sysUserServiceImpl implements sysUserService {
 
     /**
      * 判断用户是否存在
+     *
      * @param account 账号
      * @return boolean
      */
@@ -80,6 +81,7 @@ public class sysUserServiceImpl implements sysUserService {
 
     /**
      * 获取token中的账号
+     *
      * @param authHeader 认证头
      * @return 账号
      */
@@ -87,7 +89,7 @@ public class sysUserServiceImpl implements sysUserService {
     public String getAccount(String authHeader) {
         String token = authHeader.substring(7);
         String account = JWTUtils.getAccount(token);
-        return account ;
+        return account;
     }
 
     /**
@@ -100,5 +102,20 @@ public class sysUserServiceImpl implements sysUserService {
         queryWrapper.last("limit 1");
 
         return userMapper.selectOne(queryWrapper).getId();
+    }
+
+    /**
+     * 通过用户id获取用户名
+     *
+     * @param id 用户id
+     * @return 用户名
+     */
+    @Override
+    public String getUserNameById(String id) {
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(User::getId, id);
+        queryWrapper.last("limit 1");
+
+        return userMapper.selectOne(queryWrapper).getUsername();
     }
 }

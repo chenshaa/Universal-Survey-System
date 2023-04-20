@@ -15,7 +15,7 @@ public class Question {
     /**
      * 问题id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ASSIGN_ID)
     private String id;
 
     /**
@@ -53,4 +53,10 @@ public class Question {
      */
     @TableField(value = "updated_at")
     private Date updatedAt;
+
+    /**
+     * 是否必填
+     */
+    @TableField(value = "is_required")
+    private Boolean isRequired;
 }

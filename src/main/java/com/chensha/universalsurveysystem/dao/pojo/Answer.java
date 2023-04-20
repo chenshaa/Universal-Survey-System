@@ -12,21 +12,39 @@ import java.util.Date;
 @TableName("answers")
 public class Answer {
 
-    @TableId(type = IdType.AUTO)
-    private Integer id;
+    /**
+     * 主键
+     */
+    @TableId(type = IdType.ASSIGN_ID)
+    private String id;
 
+    /**
+     * 用户id
+     */
     @TableField("user_id")
-    private Integer userId;
+    private String userId;
 
+    /**
+     * 问题id
+     */
     @TableField("question_id")
-    private Integer questionId;
+    private String questionId;
 
-    @TableField("option_id")
-    private Integer optionId;
+    /**
+     * 问题答案/选项id
+     */
+    @TableField("option_context")
+    private String optionContext;
 
+    /**
+     * 创建时间
+     */
     @TableField(value = "created_at")
     private Date createdAt;
 
+    /**
+     * 更新时间
+     */
     @TableField(value = "updated_at")
     private Date updatedAt;
 }
